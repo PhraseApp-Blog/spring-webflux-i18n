@@ -10,11 +10,6 @@ import com.phraseapp.i18n.springwebflux.RequestParamLocaleContextResolver;
 public class LocaleSupportConfig extends DelegatingWebFluxConfiguration{
     
     @Override
-    protected LocaleContextResolver createLocaleContextResolver() {
-        return new RequestParamLocaleContextResolver();
-    }
-    
-    @Override
     public LocaleContextResolver localeContextResolver() {
         return new RequestParamLocaleContextResolver();
     }

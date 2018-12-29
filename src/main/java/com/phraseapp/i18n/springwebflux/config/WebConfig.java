@@ -14,6 +14,7 @@ import org.thymeleaf.spring5.SpringWebFluxTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebFlux
@@ -27,7 +28,7 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
     }
 
     @Bean
-    public SpringResourceTemplateResolver thymeleafTemplateResolver() {
+    public ITemplateResolver thymeleafTemplateResolver() {
         final SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(this.context);
         resolver.setPrefix("classpath:views/");
@@ -40,7 +41,7 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
     }
 
     @Bean
-    public ISpringWebFluxTemplateEngine thymeleadTemplateEngine() {
+    public ISpringWebFluxTemplateEngine thymeleafTemplateEngine() {
         SpringWebFluxTemplateEngine templateEngine = new SpringWebFluxTemplateEngine();
         templateEngine.setTemplateResolver(thymeleafTemplateResolver());
         return templateEngine;
@@ -49,7 +50,7 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
     @Bean
     public ThymeleafReactiveViewResolver thymeleafReactiveViewResolver() {
         ThymeleafReactiveViewResolver viewResolver = new ThymeleafReactiveViewResolver();
-        viewResolver.setTemplateEngine(thymeleadTemplateEngine());
+        viewResolver.setTemplateEngine(thymeleafTemplateEngine());
         return viewResolver;
     }
 

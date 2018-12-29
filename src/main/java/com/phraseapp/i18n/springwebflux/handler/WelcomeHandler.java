@@ -14,7 +14,7 @@ public class WelcomeHandler {
         return ServerResponse
                 .ok()
                 .contentType(MediaType.TEXT_HTML)
-                .render("hello");
+                .render("index");
     }
     
     public Mono<ServerResponse> welcome(ServerRequest request) {
